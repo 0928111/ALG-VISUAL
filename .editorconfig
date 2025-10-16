@@ -1,0 +1,27 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# 顶级配置文件，让 EditorConfig 插件停止在父级目录中搜索
+root = true
+
+# 对所有文件生效
+[*]
+# 字符集
+charset = utf-8
+# 换行符风格
+end_of_line = lf
+# 缩进风格为空格
+indent_style = space
+# 缩进大小为 2 个空格
+indent_size = 2
+# 确保文件末尾有一个换行符
+insert_final_newline = true
+# 去除行首尾的任意空白字符
+trim_trailing_whitespace = true
+
+# 对 Markdown 文件特殊处理（有时行尾空格是语法的一部分）
+[*.md]
+trim_trailing_whitespace = false
+
+# 对 Makefile 特殊处理（必须使用 Tab 缩进）
+[Makefile]
+indent_style = tab
