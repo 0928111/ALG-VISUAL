@@ -12,31 +12,28 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    # 1. 设置 Node.js（这步已经工作正常）
-    - uses: actions/setup-node@v4
+    # 明确指定 Node.js 版本，避免文件读取问题
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        node-version-file: '.nvmrc'
+        node-version: '20.19.1'
     
-    # 2. 添加这步：专门安装 pnpm
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v2
-      with:
-        version: 9
-        run_install: false
+    # 使用最直接的方式安装 pnpm
+    - name: Install pnpm
+      run: |
+        npm install -g pnpm@9
+        echo "PNPM version: $(pnpm --version)"
     
-    # 3. 添加 pnpm 缓存优化（可选但推荐）
-    - name: Setup pnpm cache
-      uses: actions/cache@v3
-      with:
-        path: ~/.pnpm-store
-        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-
-    
-    # 4. 现在可以正常使用 pnpm 命令了
+    # 安装依赖
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
     
-    - run: pnpm lint
-    - run: pnpm test --if-present
-    - run: pnpm build
+    # 运行各个步骤
+    - name: Run lint
+      run: pnpm lint
+    
+    - name: Run test
+      run: pnpm test --if-present
+    
+    - name: Run build
+      run: pnpm build
