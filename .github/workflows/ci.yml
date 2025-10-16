@@ -17,11 +17,18 @@ jobs:
       with:
         node-version-file: '.nvmrc'
     
-    # 添加 pnpm 安装配置
     - name: Setup pnpm
       uses: pnpm/action-setup@v2
+      id: pnpm-setup  # 给步骤一个 ID，便于引用
       with:
-        version: 9
+        version: 9  # 明确指定 pnpm 版本
+    
+    - name: Verify pnpm installation
+      run: |
+        echo "PNPM version:"
+        pnpm --version
+        echo "PNPM path:"
+        which pnpm  # 或 where pnpm（在 Windows 环境中）
     
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
