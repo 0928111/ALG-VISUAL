@@ -1,0 +1,101 @@
+{
+  "version": "1.0.0",
+  "naming": {
+    "nodePrefix": "网页",
+    "alphabetRange": "A-Z",              
+    "labelFormat": "{name}\nPR: {rank}"  
+  },
+  "palette": {
+    "nodeFill": { "A": "#6BBF59", "B": "#F3C6D1", "C": "#56B5E9", "D": "#F4B56A", "default": "#7E6BF2" },
+    "nodeStroke": "#2B2E3A",
+    "edgeOut": "#2EA0FF",    
+    "edgeIn": "#FF9C66",     
+    "weightText": "#2B2E3A",
+    "background": "#F5F7FA",
+    "selection": "#7A6EFE",
+    "highlight": "#00C2A8",
+    "legendBg": "rgba(255,255,255,0.9)"
+  },
+  "node": {
+    "radius": { "min": 18, "max": 36 },              
+    "shadow": { "blur": 6, "opacity": 0.25 },
+    "label": { "font": "12px/1.2 Inter, system-ui", "padding": 4, "anchor": "south", "bg": "rgba(255,255,255,0.65)" }
+  },
+  "edge": {
+    "style": "straight",                               
+    "dualChannel": true,                              
+    "curveOffset": 14,                                 
+    "arrow": { "size": 8, "markerUnits": "strokeWidth", "expose": true }, 
+    "strokeWidth": { "min": 1.5, "max": 4.5 },         
+    "opacity": { "min": 0.45, "max": 0.95 },
+    "hitArea": "stroke",                               
+    "truncateAtNodeRadius": true                       
+  },
+  "weightLabel": {
+    "visible": true,
+    "font": "13px/1.1 Inter, system-ui",
+    "placement": "midpoint-offset",                    
+    "offset": 10,
+    "autoScaleWithZoom": true,
+    "format": "{value:.2f}"
+  },
+  "layout": {
+    "mode": "force",                                   
+    "force": { "linkDistance": 120, "charge": -300, "collide": 38, "centerStrength": 0.2 },
+    "fitToView": { "padding": 48, "minZoom": 0.6, "maxZoom": 2.0 },
+    "preventOverlap": true
+  },
+  "legend": {
+    "draggable": true,
+    "collapsible": true,
+    "position": { "x": 24, "y": 24 },                 
+    "persist": "localStorage:key=pr-legend-pos",
+    "items": [
+      { "icon": "node", "label": "节点（PR 映射大小/颜色）" },
+      { "icon": "edgeOut", "label": "出度（蓝）" },
+      { "icon": "edgeIn", "label": "入度（橙）" },
+      { "icon": "weight", "label": "边权（粗细/数值）" }
+    ]
+  },
+  "interaction": {
+    "hoverHighlight": true,
+    "clickSelect": true,
+    "tooltips": { "enabled": true, "format": "出:{outdeg} 入:{indeg}\nPR:{rank:.3f}" },
+    "keyboard": { "fit": "f" },
+    "reset": { "enabled": true }
+  },
+  "animation": {
+    "duration": 450,
+    "easing": "easeCubic",
+    "teachingFlow": [
+      {
+        "id": "predict",
+        "label": "预测",
+        "effect": [
+          { "type": "pulse-nodes", "targets": "all", "times": 2 },
+          { "type": "dim-edges", "targets": "all", "to": 0.2 }
+        ]
+      },
+      {
+        "id": "observe",
+        "label": "观察（权重传播）",
+        "effect": [
+          { "type": "flow", "direction": "out", "color": "$palette.edgeOut", "widthMap": "weight" },
+          { "type": "flow", "direction": "in",  "color": "$palette.edgeIn",  "widthMap": "weight" },
+          { "type": "emphasize-weight-labels", "scale": 1.2 }
+        ]
+      },
+      {
+        "id": "explain",
+        "label": "解释（PR 更新）",
+        "effect": [
+          { "type": "rank-update", "nodes": "all", "sizeMap": "rank", "colorMap": "rank" },
+          { "type": "counter-badge", "text": "迭代 {k}", "anchor": "top-right" }
+        ]
+      }
+    ],
+    "flowParticle": { "enabled": true, "speed": 220, "size": 3 }  
+  },
+  "a11y": { "contrastMin": 3.0, "focusRing": true },
+  "export": { "png": true, "svg": true }
+}

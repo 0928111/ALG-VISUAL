@@ -1,0 +1,155 @@
+.teaching-flow-runner {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  padding: 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 480px;
+  z-index: 1000;
+}
+
+.teaching-flow-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.teaching-flow-button {
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.teaching-flow-button:hover:not(:disabled) {
+  background: #f7fafc;
+  border-color: #cbd5e0;
+  transform: translateY(-1px);
+}
+
+.teaching-flow-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.teaching-flow-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.teaching-flow-button.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: transparent;
+}
+
+.teaching-flow-button.primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #5568d3 0%, #63408b 100%);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.teaching-flow-stages {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  position: relative;
+}
+
+.teaching-flow-stage {
+  flex: 1;
+  padding: 12px 16px;
+  background: #f7fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #718096;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.teaching-flow-stage.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.teaching-flow-stage.completed {
+  background: #00C2A8;
+  color: white;
+  border-color: transparent;
+}
+
+.teaching-flow-stage:hover:not(.active) {
+  background: #edf2f7;
+  border-color: #cbd5e0;
+}
+
+.teaching-flow-stage-label {
+  display: block;
+  font-size: 11px;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+.teaching-flow-progress {
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.teaching-flow-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.teaching-flow-counter {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 194, 168, 0.95);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 194, 168, 0.3);
+  z-index: 1001;
+}
+
+/* 粒子动画 */
+@keyframes flow-particle {
+  from {
+    offset-distance: 0%;
+    opacity: 1;
+  }
+  to {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+.flow-particle {
+  animation: flow-particle 1.5s ease-in-out infinite;
+}

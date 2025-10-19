@@ -1,0 +1,34 @@
+{
+  "courses": [
+    {
+      "id": "pagerank",
+      "title": "PageRank",
+      "description": "学习网页排名算法，理解链接分析的基本原理",
+      "difficulty": "中级",
+      "duration": "30分钟",
+      "icon": "🔗",
+      "color": "#6A78F9",
+      "enabled": true
+    },
+    {
+      "id": "dijkstra",
+      "title": "Dijkstra",
+      "description": "最短路径算法，解决图论中的路径优化问题",
+      "difficulty": "高级",
+      "duration": "45分钟",
+      "icon": "🛣️",
+      "color": "#9FA8DA",
+      "enabled": false
+    },
+    {
+      "id": "sliding-window",
+      "title": "Sliding Window",
+      "description": "滑动窗口技巧，高效处理数组和字符串问题",
+      "difficulty": "初级",
+      "duration": "25分钟",
+      "icon": "🪟",
+      "color": "#777A8C",
+      "enabled": false
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+/* PageRank 课程页面样式 - 静态图版本 */
+
+.pagerank-course {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.pagerank-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.pagerank-main-layout {
+  flex: 0 1 65vh; /* 减少主布局高度，从1改为0 1 65vh */
+  display: flex;
+  gap: 20px;
+  min-height: 400px; /* 降低最小高度 */
+  max-height: 65vh; /* 添加最大高度限制 */
+}
+
+.pagerank-left-panel {
+  width: 30%; /* 改为30%比例 */
+  background: transparent; /* 移除白色背景 */
+  border-radius: 12px;
+  box-shadow: none; /* 移除阴影 */
+  padding: 15px;
+  overflow: auto; /* 需要时显示滚动条 */
+  max-height: 60vh; /* 添加最大高度限制 */
+}
+
+.pagerank-center-panel {
+  flex: 0 0 40%; /* 改为40%固定比例 */
+  background: transparent; /* 保持透明背景 */
+  border-radius: 12px;
+  box-shadow: none; /* 移除阴影 */
+  padding: 15px;
+  overflow: auto; /* 需要时显示滚动条 */
+  display: flex;
+  flex-direction: column;
+  max-height: 60vh; /* 添加最大高度限制 */
+}
+
+.pagerank-visualization {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 350px; /* 从500px降低到350px */
+  max-height: 55vh; /* 添加最大高度限制 */
+  background: white; /* SVG区域保持白色背景 */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  overflow: hidden; /* 防止内容溢出 */
+  position: relative;
+}
+
+.pagerank-right-panel {
+  width: 30%; /* 改为30%比例 */
+  background: transparent; /* 移除白色背景 */
+  border-radius: 12px;
+  box-shadow: none; /* 移除阴影 */
+  padding: 15px;
+  overflow: auto; /* 需要时显示滚动条 */
+  max-height: 60vh; /* 添加最大高度限制 */
+}
+
+.pagerank-bottom-panel {
+  background: transparent; /* 移除白色背景 */
+  border-radius: 12px;
+  box-shadow: none; /* 移除阴影 */
+  padding: 20px;
+  overflow: auto; /* 在需要时显示滚动条 */
+  min-height: 200px; /* 增加最小高度 */
+  max-height: 30vh; /* 添加最大高度限制 */
+  flex-shrink: 0; /* 防止面板被压缩 */
+  transition: all 0.3s ease; /* 添加过渡动画 */
+}
+
+/* 移除控制面板的白色背景 */
+.pagerank-bottom-panel .controls {
+  background: transparent; /* 改为透明背景 */
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.pagerank-bottom-panel.controls-collapsed {
+  min-height: 60px; /* 控制面板收起时的最小高度 */
+  max-height: 80px; /* 控制面板收起时的最大高度 */
+}
+
+.pagerank-visualization {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 350px; /* 从500px降低到350px */
+  max-height: 55vh; /* 添加最大高度限制 */
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .pagerank-main-layout {
+    flex-direction: column;
+    max-height: 55vh; /* 在小屏幕上进一步降低高度 */
+  }
+  
+  .pagerank-left-panel,
+  .pagerank-right-panel {
+    width: 100%; /* 在小屏幕上改为全宽 */
+    max-width: none;
+    max-height: 25vh; /* 在小屏幕上限制左右面板高度 */
+  }
+  
+  .pagerank-center-panel {
+    flex: 0 0 auto; /* 在小屏幕上自动调整 */
+    width: 100%; /* 改为全宽 */
+  }
+  
+  .pagerank-visualization {
+    min-height: 300px; /* 降低可视化区域最小高度 */
+  }
+}
+
+@media (max-width: 768px) {
+  .pagerank-content {
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .pagerank-left-panel,
+  .pagerank-center-panel,
+  .pagerank-right-panel,
+  .pagerank-bottom-panel {
+    padding: 10px; /* 进一步减少小屏幕上的内边距 */
+  }
+  
+  .pagerank-main-layout {
+    max-height: 50vh; /* 在小屏幕上进一步降低主布局高度 */
+  }
+  
+  .pagerank-visualization {
+    min-height: 250px; /* 进一步降低小屏幕上的最小高度 */
+  }
+  
+  .pagerank-bottom-panel {
+    min-height: 180px; /* 增加小屏幕上底部面板的最小高度 */
+    max-height: 35vh; /* 调整小屏幕上底部面板的最大高度 */
+  }
+}
+
+/* 暗色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .pagerank-course {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  }
+  
+  .pagerank-left-panel,
+  .pagerank-center-panel,
+  .pagerank-right-panel,
+  .pagerank-bottom-panel {
+    background: transparent; /* 改为透明背景 */
+    color: #ecf0f1;
+  }
+}
+
+/* 动画系统切换控制样式 */
+.animation-system-toggle {
+  margin-top: 15px;
+  padding: 15px;
+  background: transparent; /* 改为透明背景 */
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.animation-system-toggle .toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color: #bdc3c7; /* 改为暗色文字 */
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.animation-system-toggle input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #3498db; /* 改为蓝色主题色 */
+  cursor: pointer;
+}
+
+.animation-system-toggle:hover {
+  background: rgba(255, 255, 255, 0.05); /* 改为半透明悬停效果 */
+  transition: background-color 0.2s ease;
+}
+
+
+
+/* 暗色模式下的切换控制样式 */
+@media (prefers-color-scheme: dark) {
+  .animation-system-toggle {
+    background: transparent; /* 改为透明背景 */
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .animation-system-toggle .toggle-label {
+    color: #ecf0f1;
+  }
+  
+  .animation-system-toggle:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* 碰撞检测状态信息样式 */
+.collision-info {
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-line;
+  transition: all 0.3s ease;
+  border-left: 4px solid #ffc107;
+  padding-left: 12px;
+  margin-top: 15px;
+  background: transparent; /* 改为透明背景 */
+  color: inherit; /* 继承文字颜色 */
+}
+
+.collision-info.optimized {
+  border-left-color: #28a745;
+  background-color: transparent; /* 改为透明背景 */
+  color: #155724;
+}
+
+.collision-info:not(.optimized) {
+  background-color: transparent; /* 改为透明背景 */
+  color: #856404;
+}
+
+/* 暗色模式下的碰撞信息样式 */
+@media (prefers-color-scheme: dark) {
+  .collision-info.optimized {
+    background-color: transparent; /* 改为透明背景 */
+    color: #d4edda;
+    border-left-color: #28a745;
+  }
+  
+  .collision-info:not(.optimized) {
+    background-color: transparent; /* 改为透明背景 */
+    color: #fff3cd;
+    border-left-color: #ffc107;
+  }
+}

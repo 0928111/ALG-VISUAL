@@ -1,0 +1,164 @@
+.flowchart-view {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 12px;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.flowchart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.flowchart-header h3 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.flowchart-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.step-indicator {
+  background: #3b82f6;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.current-node {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.flowchart-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.flowchart-svg {
+  flex: 1;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* SVG 元素动画 */
+.flow-line {
+  transition: all 0.3s ease;
+}
+
+.flow-line.active {
+  animation: flow-pulse 2s infinite;
+}
+
+@keyframes flow-pulse {
+  0% {
+    stroke-opacity: 0.7;
+  }
+  50% {
+    stroke-opacity: 1;
+  }
+  100% {
+    stroke-opacity: 0.7;
+  }
+}
+
+.flow-node-rect {
+  transition: all 0.3s ease;
+}
+
+.flow-node-group:hover .flow-node-rect {
+  filter: url(#glow);
+}
+
+.flow-node-icon-bg {
+  transition: all 0.3s ease;
+}
+
+.flow-node-title, .flow-node-desc {
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.flowchart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  margin-top: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: white;
+  border: 2px solid #e2e8f0;
+}
+
+.legend-color.highlighted {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border-color: #ff6b35;
+}
+
+.legend-color.active {
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  border-color: #ff6b35;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .flowchart-view {
+    padding: 15px;
+  }
+  
+  .flowchart-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .flowchart-info {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .flowchart-legend {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,39 @@
+.integrated-graph-demo {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  overflow: hidden;
+}
+
+.demo-header {
+  padding: 24px 32px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.demo-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #2B2E3A;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.demo-header p {
+  margin: 8px 0 0 0;
+  font-size: 14px;
+  color: #718096;
+}
+
+.demo-main {
+  flex: 1;
+  position: relative;
+  background: #F5F7FA;
+  overflow: hidden;
+}

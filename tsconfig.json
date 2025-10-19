@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable", "ES2015.Collection", "ES2015.Iterable", "ES2015.Symbol"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Path mapping */
+    "baseUrl": ".",
+    "paths": {
+      "@alg-visual/data-view": ["./packages/data-view"],
+      "@alg-visual/flowchart-renderer": ["./packages/flowchart-renderer"],
+      "@alg-visual/simulators/*": ["./packages/simulators/*"]
+    }
+  },
+  "include": ["apps/web/src", "packages"],
+  "exclude": ["node_modules", "dist", "**/*.js"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

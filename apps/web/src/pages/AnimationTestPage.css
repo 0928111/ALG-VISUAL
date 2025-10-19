@@ -1,0 +1,557 @@
+/* 动画测试页面样式 */
+
+.animation-test-page {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.test-header {
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 24px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.test-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c3e50;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.test-header p {
+  margin: 0;
+  font-size: 16px;
+  color: #7f8c8d;
+  font-weight: 400;
+}
+
+/* 测试控制 */
+.test-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.control-section {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.control-section h3 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 8px;
+}
+
+.feature-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #34495e;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.toggle-label:hover {
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.toggle-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #667eea;
+  cursor: pointer;
+}
+
+.test-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.test-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 140px;
+}
+
+.test-button.primary {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.test-button.primary:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.test-button.primary:disabled {
+  background: #bdc3c7;
+  color: #7f8c8d;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.test-button.secondary {
+  background: white;
+  color: #667eea;
+  border: 2px solid #667eea;
+}
+
+.test-button.secondary:hover {
+  background: rgba(102, 126, 234, 0.05);
+}
+
+/* 测试内容 */
+.test-content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.animation-container {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* 指标面板 */
+.metrics-panel {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.metrics-panel h3 {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* 指标摘要 */
+.metrics-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.metric-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.metric-label {
+  font-size: 12px;
+  color: #7f8c8d;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.metric-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 4px;
+}
+
+.metric-grade {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.metric-grade.grade-A {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+}
+
+.metric-grade.grade-B {
+  background: rgba(139, 195, 74, 0.1);
+  color: #8bc34a;
+}
+
+.metric-grade.grade-C {
+  background: rgba(255, 152, 0, 0.1);
+  color: #ff9800;
+}
+
+.metric-grade.grade-D {
+  background: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+}
+
+/* 指标图表 */
+.metrics-charts {
+  margin-bottom: 24px;
+}
+
+.chart-container {
+  margin-bottom: 20px;
+}
+
+.chart-container h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.chart {
+  display: flex;
+  align-items: end;
+  gap: 2px;
+  height: 100px;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.chart-bar {
+  flex: 1;
+  min-height: 2px;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.chart-bar:hover {
+  opacity: 0.8;
+  transform: scaleY(1.1);
+}
+
+/* 错误部分 */
+.error-section {
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(244, 67, 54, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(244, 67, 54, 0.1);
+}
+
+.error-section h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #f44336;
+}
+
+.error-list {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.error-item {
+  padding: 8px;
+  margin-bottom: 4px;
+  background: rgba(244, 67, 54, 0.1);
+  border-radius: 4px;
+  font-size: 12px;
+  color: #d32f2f;
+  border-left: 3px solid #f44336;
+}
+
+.error-item:last-child {
+  margin-bottom: 0;
+}
+
+/* 测试总结 */
+.test-summary {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.test-summary h3 {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c3e50;
+  text-align: center;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 12px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.summary-label {
+  font-size: 14px;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.summary-value {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.summary-value.status-running {
+  color: #ff9800;
+}
+
+.summary-value.status-completed {
+  color: #4caf50;
+}
+
+.summary-value.status-error {
+  color: #f44336;
+}
+
+.summary-value.grade-A {
+  color: #4caf50;
+}
+
+.summary-value.grade-B {
+  color: #8bc34a;
+}
+
+.summary-value.grade-C {
+  color: #ff9800;
+}
+
+.summary-value.grade-D {
+  color: #f44336;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .test-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .metrics-panel {
+    max-height: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .animation-test-page {
+    padding: 16px;
+  }
+  
+  .test-controls {
+    grid-template-columns: 1fr;
+  }
+  
+  .metrics-summary {
+    grid-template-columns: 1fr;
+  }
+  
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .test-buttons {
+    flex-direction: column;
+  }
+  
+  .test-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .test-header h1 {
+    font-size: 24px;
+  }
+  
+  .test-header p {
+    font-size: 14px;
+  }
+  
+  .control-section {
+    padding: 16px;
+  }
+  
+  .feature-toggles {
+    gap: 8px;
+  }
+  
+  .toggle-label {
+    font-size: 12px;
+  }
+}
+
+/* 暗色主题支持 */
+@media (prefers-color-scheme: dark) {
+  .animation-test-page {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #ecf0f1;
+  }
+  
+  .test-header, .control-section, .animation-container, .metrics-panel, .test-summary {
+    background: #34495e;
+    color: #ecf0f1;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .test-header h1 {
+    color: #ecf0f1;
+  }
+  
+  .control-section h3, .metrics-panel h3, .test-summary h3 {
+    color: #ecf0f1;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .toggle-label {
+    color: #bdc3c7;
+  }
+  
+  .toggle-label:hover {
+    background: rgba(102, 126, 234, 0.1);
+  }
+  
+  .metric-card, .summary-item {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  }
+  
+  .metric-label, .summary-label {
+    color: #bdc3c7;
+  }
+  
+  .metric-value, .summary-value {
+    color: #ecf0f1;
+  }
+  
+  .chart {
+    background: #2c3e50;
+  }
+  
+  .error-section {
+    background: rgba(244, 67, 54, 0.1);
+  }
+  
+  .error-item {
+    background: rgba(244, 67, 54, 0.2);
+    color: #ffcdd2;
+  }
+}
+
+/* 高对比度模式 */
+@media (prefers-contrast: high) {
+  .animation-test-page {
+    background: white;
+    color: black;
+  }
+  
+  .test-header, .control-section, .animation-container, .metrics-panel, .test-summary {
+    border: 2px solid black;
+    background: white;
+    color: black;
+  }
+  
+  .test-button.primary {
+    border: 2px solid black;
+  }
+  
+  .metric-card, .summary-item {
+    border: 1px solid black;
+  }
+  
+  .chart {
+    border: 1px solid black;
+  }
+}
+
+/* 减少动画模式 */
+@media (prefers-reduced-motion: reduce) {
+  .animation-test-page,
+  .test-header,
+  .control-section,
+  .animation-container,
+  .metrics-panel,
+  .test-summary,
+  .test-button,
+  .metric-card,
+  .summary-item,
+  .chart-bar {
+    transition: none;
+  }
+  
+  .test-button:not(:disabled):hover {
+    transform: none;
+  }
+  
+  .metric-card:hover {
+    transform: none;
+  }
+  
+  .chart-bar:hover {
+    transform: none;
+  }
+}

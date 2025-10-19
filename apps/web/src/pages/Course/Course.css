@@ -1,0 +1,178 @@
+.course-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.visualization-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  margin: 20px;
+}
+
+.visualization-placeholder p {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+}
+
+.visualization-placeholder a {
+  color: #1890ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.visualization-placeholder a:hover {
+  text-decoration: underline;
+}
+
+.course-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+
+.course-main-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr 320px; /* 左中右三栏布局，左右固定宽度完全对称 */
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+}
+
+.course-left-panel {
+  grid-column: 1;
+  width: 320px; /* 固定宽度 */
+  min-width: 320px;
+  max-width: 320px;
+}
+
+.course-center-panel {
+  grid-column: 2;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.course-right-panel {
+  grid-column: 3;
+  width: 320px; /* 固定宽度，与左侧完全对称 */
+  min-width: 320px;
+  max-width: 320px;
+}
+
+.course-bottom-panel {
+  flex: 0 0 auto;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .course-main-layout {
+    gap: 15px;
+    grid-template-columns: 300px 1fr 300px; /* 左右面板宽度对称减小 */
+  }
+  
+  .course-left-panel,
+  .course-right-panel {
+    width: 300px; /* 固定宽度保持对称 */
+    min-width: 300px;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .course-main-layout {
+    grid-template-columns: 280px 1fr 280px; /* 左右面板宽度对称进一步减小 */
+  }
+  
+  .course-left-panel,
+  .course-right-panel {
+    width: 280px; /* 固定宽度保持对称 */
+    min-width: 280px;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .course-page {
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  /* 导航栏已在Navigation组件中处理 */
+  
+  .course-main-layout {
+    grid-template-columns: 1fr; /* 单列布局 */
+    grid-template-rows: auto 1fr auto; /* 三行布局 */
+    gap: 15px;
+  }
+  
+  .course-left-panel {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: auto;
+    max-width: none;
+    height: 400px;
+  }
+  
+  .course-center-panel {
+    grid-column: 1;
+    grid-row: 2;
+    min-width: auto;
+    height: 500px;
+  }
+  
+  .course-right-panel {
+    grid-column: 1;
+    grid-row: 3;
+    min-width: auto;
+    max-width: none;
+    height: 350px;
+  }
+  
+  .course-content {
+    padding: 15px;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .course-header {
+    padding: 12px 15px;
+  }
+  
+  .course-header h1 {
+    font-size: 20px;
+  }
+  
+  .course-info {
+    gap: 10px;
+    flex-direction: column;
+  }
+  
+  .course-main-layout {
+    gap: 10px;
+  }
+  
+  .course-left-panel {
+    height: 350px;
+  }
+  
+  .course-center-panel {
+    height: 400px;
+  }
+  
+  .course-content {
+    padding: 10px;
+    gap: 10px;
+  }
+}

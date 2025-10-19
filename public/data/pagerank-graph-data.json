@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "nodes": [
+    { "id": "A", "label": "网页A", "rank": 25, "x": 520, "y": 220 },
+    { "id": "B", "label": "网页B", "rank": 25, "x": 240, "y": 240 },
+    { "id": "C", "label": "网页C", "rank": 25, "x": 360, "y": 360 },
+    { "id": "D", "label": "网页D", "rank": 25, "x": 820, "y": 280 }
+  ],
+  "edges": [
+    { "id": "B->A", "source": "B", "target": "A", "weight": 15 },
+    { "id": "B->C", "source": "B", "target": "C", "weight": 10 },
+    { "id": "C->A", "source": "C", "target": "A", "weight": 8 },
+    { "id": "A->C", "source": "A", "target": "C", "weight": 15 },
+    { "id": "C->B", "source": "C", "target": "B", "weight": 7 },
+    { "id": "A->D", "source": "A", "target": "D", "weight": 25 },
+    { "id": "C->D", "source": "C", "target": "D", "weight": 10 }
+  ],
+  "initialPositions": {
+    "A": { "x": 520, "y": 220 },
+    "B": { "x": 240, "y": 240 },
+    "C": { "x": 360, "y": 360 },
+    "D": { "x": 820, "y": 280 }
+  }
+}

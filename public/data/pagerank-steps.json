@@ -1,0 +1,140 @@
+{
+  "steps": [
+    {
+      "step": 1,
+      "title": "100个访问者平均分配",
+      "description": "将100个访问者平均分配给4个网页，每个网页初始获得25个访问者",
+      "highlightedNodes": ["start", "init"],
+      "data": {
+        "totalVisitors": 100,
+        "pageCount": 4,
+        "averageVisitors": 25,
+        "pages": [
+          { "id": "A", "visitors": 25, "outLinks": 2, "rank": 25 },
+          { "id": "B", "visitors": 25, "outLinks": 1, "rank": 25 },
+          { "id": "C", "visitors": 25, "outLinks": 2, "rank": 25 },
+          { "id": "D", "visitors": 25, "outLinks": 3, "rank": 25 }
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "title": "检查初始状态",
+      "description": "确认是否为初始分配状态，准备开始重新分配访问者",
+      "highlightedNodes": ["check_initial"],
+      "data": {
+        "totalVisitors": 100,
+        "pageCount": 4,
+        "averageVisitors": 25,
+        "pages": [
+          { "id": "A", "visitors": 25, "outLinks": 2, "rank": 25 },
+          { "id": "B", "visitors": 25, "outLinks": 1, "rank": 25 },
+          { "id": "C", "visitors": 25, "outLinks": 2, "rank": 25 },
+          { "id": "D", "visitors": 25, "outLinks": 3, "rank": 25 }
+        ]
+      }
+    },
+    {
+      "step": 3,
+      "title": "呈现初始状态",
+      "description": "展示每个网页初始获得25个访问者的状态",
+      "highlightedNodes": ["show_initial"],
+      "data": {
+        "totalVisitors": 100,
+        "pageCount": 4,
+        "averageVisitors": 25,
+        "pages": [
+          { "id": "A", "visitors": 25, "outLinks": 2, "rank": 25 },
+          { "id": "B", "visitors": 25, "outLinks": 1, "rank": 25 },
+          { "id": "C", "visitors": 25, "outLinks": 2, "rank": 25 },
+          { "id": "D", "visitors": 25, "outLinks": 3, "rank": 25 }
+        ]
+      }
+    },
+    {
+      "step": 4,
+      "title": "依据链接重新分配访问者",
+      "description": "B网页将其25个访问者分配给A(15)和C(10)",
+      "highlightedNodes": ["redistribute"],
+      "data": {
+        "totalVisitors": 100,
+        "pageCount": 4,
+        "averageVisitors": 25,
+        "pages": [
+          { "id": "A", "visitors": 40, "outLinks": 2, "rank": 40 },
+          { "id": "B", "visitors": 0, "outLinks": 1, "rank": 0 },
+          { "id": "C", "visitors": 35, "outLinks": 2, "rank": 35 },
+          { "id": "D", "visitors": 25, "outLinks": 3, "rank": 25 }
+        ]
+      }
+    },
+    {
+      "step": 5,
+      "title": "动态展示访问者流动",
+      "description": "可视化展示访问者从B跳转到A和C的动态过程",
+      "highlightedNodes": ["show_flow"],
+      "data": {
+        "totalVisitors": 100,
+        "pageCount": 4,
+        "averageVisitors": 25,
+        "pages": [
+          { "id": "A", "visitors": 40, "outLinks": 2, "rank": 40 },
+          { "id": "B", "visitors": 0, "outLinks": 1, "rank": 0 },
+          { "id": "C", "visitors": 35, "outLinks": 2, "rank": 35 },
+          { "id": "D", "visitors": 25, "outLinks": 3, "rank": 25 }
+        ]
+      }
+    },
+    {
+      "step": 6,
+      "title": "呈现重新分配结果",
+      "description": "展示访问者重新分配后的结果：A(40), B(0), C(35), D(25)",
+      "highlightedNodes": ["show_result"],
+      "data": {
+        "totalVisitors": 100,
+        "pageCount": 4,
+        "averageVisitors": 25,
+        "pages": [
+          { "id": "A", "visitors": 40, "outLinks": 2, "rank": 40 },
+          { "id": "B", "visitors": 0, "outLinks": 1, "rank": 0 },
+          { "id": "C", "visitors": 35, "outLinks": 2, "rank": 35 },
+          { "id": "D", "visitors": 25, "outLinks": 3, "rank": 25 }
+        ]
+      }
+    },
+    {
+      "step": 7,
+      "title": "检查收敛状态",
+      "description": "检查访问者分布是否达到稳定状态",
+      "highlightedNodes": ["check_convergence"],
+      "data": {
+        "totalVisitors": 100,
+        "pageCount": 4,
+        "averageVisitors": 25,
+        "pages": [
+          { "id": "A", "visitors": 40, "outLinks": 2, "rank": 40 },
+          { "id": "B", "visitors": 0, "outLinks": 1, "rank": 0 },
+          { "id": "C", "visitors": 35, "outLinks": 2, "rank": 35 },
+          { "id": "D", "visitors": 25, "outLinks": 3, "rank": 25 }
+        ]
+      }
+    },
+    {
+      "step": 8,
+      "title": "输出最终排名",
+      "description": "根据最终访问者数量输出PageRank排名：D(60) > A(8) > C(25) > B(7)",
+      "highlightedNodes": ["output_rank", "end"],
+      "data": {
+        "totalVisitors": 100,
+        "pageCount": 4,
+        "averageVisitors": 25,
+        "pages": [
+          { "id": "A", "visitors": 8, "outLinks": 2, "rank": 8 },
+          { "id": "B", "visitors": 7, "outLinks": 1, "rank": 7 },
+          { "id": "C", "visitors": 25, "outLinks": 2, "rank": 25 },
+          { "id": "D", "visitors": 60, "outLinks": 3, "rank": 60 }
+        ]
+      }
+    }
+  ]
+}

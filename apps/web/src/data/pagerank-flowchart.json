@@ -1,0 +1,27 @@
+{
+  "nodes": [
+    { "id": "start", "type": "start", "label": "开始", "x": 100, "y": 50 },
+    { "id": "init", "type": "process", "label": "100个访问者平均分配", "x": 100, "y": 120 },
+    { "id": "check_initial", "type": "decision", "label": "是否为初始状态?", "x": 100, "y": 190 },
+    { "id": "show_initial", "type": "process", "label": "呈现初始状态\n(每页25访问者)", "x": 250, "y": 190 },
+    { "id": "redistribute", "type": "process", "label": "依据链接重新分配访问者", "x": 100, "y": 260 },
+    { "id": "show_flow", "type": "process", "label": "动态展示访问者流动", "x": 100, "y": 330 },
+    { "id": "show_result", "type": "process", "label": "呈现重新分配结果", "x": 100, "y": 400 },
+    { "id": "check_convergence", "type": "decision", "label": "访问者是否稳定?", "x": 100, "y": 470 },
+    { "id": "output_rank", "type": "process", "label": "输出最终PageRank排名", "x": 250, "y": 470 },
+    { "id": "end", "type": "end", "label": "结束", "x": 100, "y": 540 }
+  ],
+  "edges": [
+    { "from": "start", "to": "init", "label": "" },
+    { "from": "init", "to": "check_initial", "label": "" },
+    { "from": "check_initial", "to": "show_initial", "label": "是" },
+    { "from": "check_initial", "to": "redistribute", "label": "否" },
+    { "from": "show_initial", "to": "redistribute", "label": "" },
+    { "from": "redistribute", "to": "show_flow", "label": "" },
+    { "from": "show_flow", "to": "show_result", "label": "" },
+    { "from": "show_result", "to": "check_convergence", "label": "" },
+    { "from": "check_convergence", "to": "output_rank", "label": "是" },
+    { "from": "check_convergence", "to": "redistribute", "label": "否" },
+    { "from": "output_rank", "to": "end", "label": "" }
+  ]
+}

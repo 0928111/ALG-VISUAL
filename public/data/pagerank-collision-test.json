@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "nodes": [
+    { "id": "A", "label": "节点A长标签", "rank": 35, "x": 400, "y": 200 },
+    { "id": "B", "label": "节点B长标签", "rank": 30, "x": 450, "y": 220 },
+    { "id": "C", "label": "节点C长标签", "rank": 25, "x": 380, "y": 250 },
+    { "id": "D", "label": "节点D长标签", "rank": 20, "x": 420, "y": 280 },
+    { "id": "E", "label": "节点E长标签", "rank": 15, "x": 460, "y": 300 },
+    { "id": "F", "label": "节点F长标签", "rank": 10, "x": 400, "y": 320 }
+  ],
+  "edges": [
+    { "id": "A->B", "source": "A", "target": "B", "weight": 15 },
+    { "id": "B->C", "source": "B", "target": "C", "weight": 10 },
+    { "id": "C->D", "source": "C", "target": "D", "weight": 8 },
+    { "id": "D->E", "source": "D", "target": "E", "weight": 12 },
+    { "id": "E->F", "source": "E", "target": "F", "weight": 7 },
+    { "id": "F->A", "source": "F", "target": "A", "weight": 9 }
+  ],
+  "initialPositions": {
+    "A": { "x": 400, "y": 200 },
+    "B": { "x": 450, "y": 220 },
+    "C": { "x": 380, "y": 250 },
+    "D": { "x": 420, "y": 280 },
+    "E": { "x": 460, "y": 300 },
+    "F": { "x": 400, "y": 320 }
+  }
+}

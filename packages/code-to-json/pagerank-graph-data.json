@@ -1,0 +1,1105 @@
+{
+  "metadata": {
+    "language": "python",
+    "version": "1.0",
+    "timestamp": "2025-10-18T16:30:27.112Z",
+    "algorithm": "pagerank"
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "class_0",
+        "type": "class",
+        "label": "PageRankVisualizer",
+        "properties": {
+          "code": "class PageRankVisualizer:",
+          "line": 4,
+          "file": "unknown",
+          "methods": [
+            "__init__",
+            "initialize_pagerank",
+            "create_sample_graph",
+            "calculate_outgoing_probabilities",
+            "iterate_pagerank",
+            "rank_nodes",
+            "main"
+          ]
+        }
+      },
+      {
+        "id": "func_1",
+        "type": "function",
+        "label": "__init__",
+        "properties": {
+          "code": "def __init__(self, damping_factor=0.85, max_iterations=4, tolerance=1e-6):",
+          "line": 10,
+          "file": "unknown",
+          "params": [
+            "self",
+            "damping_factor=0.85",
+            "max_iterations=4",
+            "tolerance=1e-6"
+          ],
+          "isPageRankStep": false,
+          "stepOrder": 999
+        }
+      },
+      {
+        "id": "func_2",
+        "type": "function",
+        "label": "initialize_pagerank",
+        "properties": {
+          "code": "def initialize_pagerank(self, num_nodes):",
+          "line": 26,
+          "file": "unknown",
+          "params": [
+            "self",
+            "num_nodes"
+          ],
+          "isPageRankStep": true,
+          "stepOrder": 1
+        }
+      },
+      {
+        "id": "func_3",
+        "type": "function",
+        "label": "create_sample_graph",
+        "properties": {
+          "code": "def create_sample_graph(self):",
+          "line": 41,
+          "file": "unknown",
+          "params": [
+            "self"
+          ],
+          "isPageRankStep": false,
+          "stepOrder": 999
+        }
+      },
+      {
+        "id": "func_4",
+        "type": "function",
+        "label": "calculate_outgoing_probabilities",
+        "properties": {
+          "code": "def calculate_outgoing_probabilities(self, adjacency_matrix):",
+          "line": 60,
+          "file": "unknown",
+          "params": [
+            "self",
+            "adjacency_matrix"
+          ],
+          "isPageRankStep": true,
+          "stepOrder": 2
+        }
+      },
+      {
+        "id": "func_5",
+        "type": "function",
+        "label": "iterate_pagerank",
+        "properties": {
+          "code": "def iterate_pagerank(self, adjacency_matrix, initial_pagerank):",
+          "line": 87,
+          "file": "unknown",
+          "params": [
+            "self",
+            "adjacency_matrix",
+            "initial_pagerank"
+          ],
+          "isPageRankStep": true,
+          "stepOrder": 3
+        }
+      },
+      {
+        "id": "func_6",
+        "type": "function",
+        "label": "rank_nodes",
+        "properties": {
+          "code": "def rank_nodes(self, pagerank_values, node_labels):",
+          "line": 125,
+          "file": "unknown",
+          "params": [
+            "self",
+            "pagerank_values",
+            "node_labels"
+          ],
+          "isPageRankStep": true,
+          "stepOrder": 4
+        }
+      },
+      {
+        "id": "func_7",
+        "type": "function",
+        "label": "main",
+        "properties": {
+          "code": "def main(self):",
+          "line": 144,
+          "file": "unknown",
+          "params": [
+            "self"
+          ],
+          "isPageRankStep": true,
+          "stepOrder": 5
+        }
+      },
+      {
+        "id": "var_8",
+        "type": "variable",
+        "label": "damping_factor",
+        "properties": {
+          "code": "damping_factor=0.85, max_iterations=4, tolerance=1e-6):",
+          "line": 10,
+          "file": "unknown",
+          "value": "0.85, max_iterations=4, tolerance=1e-6):",
+          "isPageRankData": true
+        }
+      },
+      {
+        "id": "var_9",
+        "type": "variable",
+        "label": "damping_factor",
+        "properties": {
+          "code": "damping_factor = damping_factor",
+          "line": 19,
+          "file": "unknown",
+          "value": "damping_factor",
+          "isPageRankData": true
+        }
+      },
+      {
+        "id": "var_10",
+        "type": "variable",
+        "label": "max_iterations",
+        "properties": {
+          "code": "max_iterations = max_iterations",
+          "line": 20,
+          "file": "unknown",
+          "value": "max_iterations",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_11",
+        "type": "variable",
+        "label": "tolerance",
+        "properties": {
+          "code": "tolerance = tolerance",
+          "line": 21,
+          "file": "unknown",
+          "value": "tolerance",
+          "isPageRankData": true
+        }
+      },
+      {
+        "id": "var_12",
+        "type": "variable",
+        "label": "pagerank_history",
+        "properties": {
+          "code": "pagerank_history = []  # 存储每次迭代的PageRank值",
+          "line": 22,
+          "file": "unknown",
+          "value": "[]  # 存储每次迭代的PageRank值",
+          "isPageRankData": true
+        }
+      },
+      {
+        "id": "var_13",
+        "type": "variable",
+        "label": "convergence_reached",
+        "properties": {
+          "code": "convergence_reached = False",
+          "line": 23,
+          "file": "unknown",
+          "value": "False",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_14",
+        "type": "variable",
+        "label": "iteration_count",
+        "properties": {
+          "code": "iteration_count = 0",
+          "line": 24,
+          "file": "unknown",
+          "value": "0",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_15",
+        "type": "variable",
+        "label": "initial_pagerank",
+        "properties": {
+          "code": "initial_pagerank = np.ones(num_nodes) / num_nodes",
+          "line": 37,
+          "file": "unknown",
+          "value": "np.ones(num_nodes) / num_nodes",
+          "isPageRankData": true
+        }
+      },
+      {
+        "id": "var_16",
+        "type": "variable",
+        "label": "adjacency_matrix",
+        "properties": {
+          "code": "adjacency_matrix = np.array([",
+          "line": 50,
+          "file": "unknown",
+          "value": "np.array([",
+          "isPageRankData": true
+        }
+      },
+      {
+        "id": "var_17",
+        "type": "variable",
+        "label": "node_labels",
+        "properties": {
+          "code": "node_labels = ['A', 'B', 'C', 'D']",
+          "line": 57,
+          "file": "unknown",
+          "value": "['A', 'B', 'C', 'D']",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_18",
+        "type": "variable",
+        "label": "n",
+        "properties": {
+          "code": "n = adjacency_matrix.shape[0]",
+          "line": 70,
+          "file": "unknown",
+          "value": "adjacency_matrix.shape[0]",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_19",
+        "type": "variable",
+        "label": "transition_matrix",
+        "properties": {
+          "code": "transition_matrix = np.zeros((n, n))",
+          "line": 71,
+          "file": "unknown",
+          "value": "np.zeros((n, n))",
+          "isPageRankData": true
+        }
+      },
+      {
+        "id": "var_20",
+        "type": "variable",
+        "label": "out_degrees",
+        "properties": {
+          "code": "out_degrees = np.sum(adjacency_matrix, axis=1)",
+          "line": 74,
+          "file": "unknown",
+          "value": "np.sum(adjacency_matrix, axis=1)",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_21",
+        "type": "variable",
+        "label": "n",
+        "properties": {
+          "code": "n = adjacency_matrix.shape[0]",
+          "line": 98,
+          "file": "unknown",
+          "value": "adjacency_matrix.shape[0]",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_22",
+        "type": "variable",
+        "label": "current_pagerank",
+        "properties": {
+          "code": "current_pagerank = initial_pagerank.copy()",
+          "line": 99,
+          "file": "unknown",
+          "value": "initial_pagerank.copy()",
+          "isPageRankData": true
+        }
+      },
+      {
+        "id": "var_23",
+        "type": "variable",
+        "label": "transition_matrix",
+        "properties": {
+          "code": "transition_matrix = self.calculate_outgoing_probabilities(adjacency_matrix)",
+          "line": 102,
+          "file": "unknown",
+          "value": "self.calculate_outgoing_probabilities(adjacency_matrix)",
+          "isPageRankData": true
+        }
+      },
+      {
+        "id": "var_24",
+        "type": "variable",
+        "label": "iteration_count",
+        "properties": {
+          "code": "iteration_count = iteration + 1",
+          "line": 106,
+          "file": "unknown",
+          "value": "iteration + 1",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_25",
+        "type": "variable",
+        "label": "new_pagerank",
+        "properties": {
+          "code": "new_pagerank = (1 - self.damping_factor) / n + \\",
+          "line": 109,
+          "file": "unknown",
+          "value": "(1 - self.damping_factor) / n + \\",
+          "isPageRankData": true
+        }
+      },
+      {
+        "id": "var_26",
+        "type": "variable",
+        "label": "diff",
+        "properties": {
+          "code": "diff = np.linalg.norm(new_pagerank - current_pagerank, 1)",
+          "line": 116,
+          "file": "unknown",
+          "value": "np.linalg.norm(new_pagerank - current_pagerank, 1)",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_27",
+        "type": "variable",
+        "label": "convergence_reached",
+        "properties": {
+          "code": "convergence_reached = True",
+          "line": 118,
+          "file": "unknown",
+          "value": "True",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_28",
+        "type": "variable",
+        "label": "current_pagerank",
+        "properties": {
+          "code": "current_pagerank = new_pagerank",
+          "line": 121,
+          "file": "unknown",
+          "value": "new_pagerank",
+          "isPageRankData": true
+        }
+      },
+      {
+        "id": "var_29",
+        "type": "variable",
+        "label": "node_scores",
+        "properties": {
+          "code": "node_scores = [(label, score) for label, score in zip(node_labels, pagerank_values)]",
+          "line": 137,
+          "file": "unknown",
+          "value": "[(label, score) for label, score in zip(node_labels, pagerank_values)]",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_30",
+        "type": "variable",
+        "label": "ranked_nodes",
+        "properties": {
+          "code": "ranked_nodes = sorted(node_scores, key=lambda x: x[1], reverse=True)",
+          "line": 140,
+          "file": "unknown",
+          "value": "sorted(node_scores, key=lambda x: x[1], reverse=True)",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_31",
+        "type": "variable",
+        "label": "node_labels",
+        "properties": {
+          "code": "node_labels = self.create_sample_graph()",
+          "line": 149,
+          "file": "unknown",
+          "value": "self.create_sample_graph()",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_32",
+        "type": "variable",
+        "label": "num_nodes",
+        "properties": {
+          "code": "num_nodes = adjacency_matrix.shape[0]",
+          "line": 152,
+          "file": "unknown",
+          "value": "adjacency_matrix.shape[0]",
+          "isPageRankData": true
+        }
+      },
+      {
+        "id": "var_33",
+        "type": "variable",
+        "label": "initial_pagerank",
+        "properties": {
+          "code": "initial_pagerank = self.initialize_pagerank(num_nodes)",
+          "line": 153,
+          "file": "unknown",
+          "value": "self.initialize_pagerank(num_nodes)",
+          "isPageRankData": true
+        }
+      },
+      {
+        "id": "var_34",
+        "type": "variable",
+        "label": "final_pagerank",
+        "properties": {
+          "code": "final_pagerank = self.iterate_pagerank(adjacency_matrix, initial_pagerank)",
+          "line": 156,
+          "file": "unknown",
+          "value": "self.iterate_pagerank(adjacency_matrix, initial_pagerank)",
+          "isPageRankData": true
+        }
+      },
+      {
+        "id": "var_35",
+        "type": "variable",
+        "label": "ranked_nodes",
+        "properties": {
+          "code": "ranked_nodes = self.rank_nodes(final_pagerank, node_labels)",
+          "line": 159,
+          "file": "unknown",
+          "value": "self.rank_nodes(final_pagerank, node_labels)",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_36",
+        "type": "variable",
+        "label": "visualizer",
+        "properties": {
+          "code": "visualizer = PageRankVisualizer()",
+          "line": 171,
+          "file": "unknown",
+          "value": "PageRankVisualizer()",
+          "isPageRankData": false
+        }
+      },
+      {
+        "id": "var_37",
+        "type": "variable",
+        "label": "result",
+        "properties": {
+          "code": "result = visualizer.main()",
+          "line": 174,
+          "file": "unknown",
+          "value": "visualizer.main()",
+          "isPageRankData": false
+        }
+      }
+    ],
+    "edges": [
+      {
+        "source": "func_1",
+        "target": "func_2",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "initialize_pagerank(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_1",
+        "target": "func_3",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "create_sample_graph(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_1",
+        "target": "func_4",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "calculate_outgoing_probabilities(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_1",
+        "target": "func_5",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "iterate_pagerank(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_1",
+        "target": "func_4",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "calculate_outgoing_probabilities(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_1",
+        "target": "func_6",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "rank_nodes(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_1",
+        "target": "func_7",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "main(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_1",
+        "target": "func_3",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "create_sample_graph(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_1",
+        "target": "func_2",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "initialize_pagerank(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_1",
+        "target": "func_5",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "iterate_pagerank(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_1",
+        "target": "func_6",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "rank_nodes(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_2",
+        "target": "func_3",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "create_sample_graph(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_2",
+        "target": "func_4",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "calculate_outgoing_probabilities(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_2",
+        "target": "func_5",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "iterate_pagerank(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_2",
+        "target": "func_4",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "calculate_outgoing_probabilities(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_2",
+        "target": "func_6",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "rank_nodes(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_2",
+        "target": "func_7",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "main(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_2",
+        "target": "func_3",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "create_sample_graph(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_2",
+        "target": "func_5",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "iterate_pagerank(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_2",
+        "target": "func_6",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "rank_nodes(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_3",
+        "target": "func_4",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "calculate_outgoing_probabilities(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_3",
+        "target": "func_5",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "iterate_pagerank(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_3",
+        "target": "func_4",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "calculate_outgoing_probabilities(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_3",
+        "target": "func_6",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "rank_nodes(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_3",
+        "target": "func_7",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "main(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_3",
+        "target": "func_2",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "initialize_pagerank(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_3",
+        "target": "func_5",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "iterate_pagerank(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_3",
+        "target": "func_6",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "rank_nodes(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_4",
+        "target": "func_5",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "iterate_pagerank(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_4",
+        "target": "func_6",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "rank_nodes(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_4",
+        "target": "func_7",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "main(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_4",
+        "target": "func_3",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "create_sample_graph(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_4",
+        "target": "func_2",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "initialize_pagerank(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_4",
+        "target": "func_5",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "iterate_pagerank(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_4",
+        "target": "func_6",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "rank_nodes(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_5",
+        "target": "func_4",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "calculate_outgoing_probabilities(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_5",
+        "target": "func_6",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "rank_nodes(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_5",
+        "target": "func_7",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "main(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_5",
+        "target": "func_3",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "create_sample_graph(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_5",
+        "target": "func_2",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "initialize_pagerank(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_5",
+        "target": "func_6",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "rank_nodes(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_6",
+        "target": "func_7",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "main(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_6",
+        "target": "func_3",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "create_sample_graph(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_6",
+        "target": "func_2",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "initialize_pagerank(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_6",
+        "target": "func_5",
+        "type": "calls",
+        "weight": 1.8,
+        "properties": {
+          "code": "iterate_pagerank(",
+          "callType": "step_flow"
+        }
+      },
+      {
+        "source": "func_7",
+        "target": "func_3",
+        "type": "calls",
+        "weight": 1,
+        "properties": {
+          "code": "create_sample_graph(",
+          "callType": "regular_call"
+        }
+      },
+      {
+        "source": "func_7",
+        "target": "func_2",
+        "type": "calls",
+        "weight": 2,
+        "properties": {
+          "code": "initialize_pagerank(",
+          "callType": "main_flow"
+        }
+      },
+      {
+        "source": "func_7",
+        "target": "func_5",
+        "type": "calls",
+        "weight": 2,
+        "properties": {
+          "code": "iterate_pagerank(",
+          "callType": "main_flow"
+        }
+      },
+      {
+        "source": "func_7",
+        "target": "func_6",
+        "type": "calls",
+        "weight": 2,
+        "properties": {
+          "code": "rank_nodes(",
+          "callType": "main_flow"
+        }
+      },
+      {
+        "source": "func_2",
+        "target": "func_4",
+        "type": "pagerank_sequence",
+        "weight": 2,
+        "properties": {
+          "description": "initialize_pagerank → calculate_outgoing_probabilities"
+        }
+      },
+      {
+        "source": "func_4",
+        "target": "func_5",
+        "type": "pagerank_sequence",
+        "weight": 2,
+        "properties": {
+          "description": "calculate_outgoing_probabilities → iterate_pagerank"
+        }
+      },
+      {
+        "source": "func_5",
+        "target": "func_6",
+        "type": "pagerank_sequence",
+        "weight": 2,
+        "properties": {
+          "description": "iterate_pagerank → rank_nodes"
+        }
+      },
+      {
+        "source": "func_6",
+        "target": "func_7",
+        "type": "pagerank_sequence",
+        "weight": 2,
+        "properties": {
+          "description": "rank_nodes → main"
+        }
+      },
+      {
+        "source": "var_8",
+        "target": "func_1",
+        "type": "uses",
+        "weight": 1.5,
+        "properties": {
+          "description": "damping_factor used in __init__"
+        }
+      },
+      {
+        "source": "var_9",
+        "target": "func_1",
+        "type": "uses",
+        "weight": 1.5,
+        "properties": {
+          "description": "damping_factor used in __init__"
+        }
+      },
+      {
+        "source": "var_11",
+        "target": "func_1",
+        "type": "uses",
+        "weight": 1.5,
+        "properties": {
+          "description": "tolerance used in __init__"
+        }
+      },
+      {
+        "source": "var_15",
+        "target": "func_5",
+        "type": "uses",
+        "weight": 1.5,
+        "properties": {
+          "description": "initial_pagerank used in iterate_pagerank"
+        }
+      },
+      {
+        "source": "var_16",
+        "target": "func_4",
+        "type": "uses",
+        "weight": 1.5,
+        "properties": {
+          "description": "adjacency_matrix used in calculate_outgoing_probabilities"
+        }
+      },
+      {
+        "source": "var_16",
+        "target": "func_5",
+        "type": "uses",
+        "weight": 1.5,
+        "properties": {
+          "description": "adjacency_matrix used in iterate_pagerank"
+        }
+      },
+      {
+        "source": "var_32",
+        "target": "func_2",
+        "type": "uses",
+        "weight": 1.5,
+        "properties": {
+          "description": "num_nodes used in initialize_pagerank"
+        }
+      },
+      {
+        "source": "var_33",
+        "target": "func_5",
+        "type": "uses",
+        "weight": 1.5,
+        "properties": {
+          "description": "initial_pagerank used in iterate_pagerank"
+        }
+      }
+    ]
+  }
+}

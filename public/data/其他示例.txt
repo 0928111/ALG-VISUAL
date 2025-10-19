@@ -1,0 +1,190 @@
+1) Redux 切片（路径：@STORE/graphSpecSlice.ts）
+// REPLACE @STORE with real path
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+type GraphSpec = any; // 若有类型，替换为你的 GraphSpec
+
+const graphSpecSlice = createSlice({
+  name: 'graphSpec',
+  initialState: { spec: null as GraphSpec | null },
+  reducers: {
+    setSpec: (state, action: PayloadAction<GraphSpec>) => { state.spec = action.payload; }
+  }
+});
+export const { setSpec } = graphSpecSlice.actions;
+export default graphSpecSlice.reducer;
+export const selectSpec = (root: any) => root.graphSpec.spec;
+
+2) Redux 切片（路径：@STORE/graphDataSlice.ts）
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+export interface GraphNode { id: string; label: string; rank: number }
+export interface GraphEdge { id: string; source: string; target: string; weight?: number }
+export interface GraphData { nodes: GraphNode[]; edges: GraphEdge[]; initialPositions?: Record<string,{x:number,y:number}> }
+
+const graphDataSlice = createSlice({
+  name: 'graphData',
+  initialState: { data: null as GraphData | null },
+  reducers: {
+    setGraph: (state, action: PayloadAction<GraphData>) => { state.data = action.payload; }
+  }
+});
+export const { setGraph } = graphDataSlice.actions;
+export default graphDataSlice.reducer;
+export const selectGraph = (root: any) => root.graphData.data;
+
+3) 规范/数据加载器（路径：@MODULES/graph/spec/SpecLoader.ts）
+import { AppDispatch } from '@STORE'; // ← 替换为你的 store 类型导出
+import { setSpec } from '@STORE/graphSpecSlice'; // ← 替换路径
+
+export async function loadGraphSpec(dispatch: AppDispatch, url = '/specs/directed-weighted-graph.spec.json') {
+  const res = await fetch(url);
+  const spec = await res.json();
+  if (!spec?.palette || !spec?.edge) throw new Error('Invalid graph spec');
+  dispatch(setSpec(spec));
+  return spec;
+}
+
+数据加载器（路径：@MODULES/graph/data/GraphDataLoader.ts）
+import { AppDispatch } from '@STORE';
+import { setGraph, GraphData } from '@STORE/graphDataSlice';
+
+export async function loadGraphData(dispatch: AppDispatch, url = '/data/pagerank-graph-data.json') {
+  const res = await fetch(url);
+  const data: GraphData = await res.json();
+  const ids = new Set(data.nodes.map(n => n.id));
+  if (data.edges.some(e => !ids.has(e.source) || !ids.has(e.target))) {
+    throw new Error('Edge references unknown node');
+  }
+  dispatch(setGraph(data));
+  return data;
+}
+
+4) Graph 组件骨架（路径：@MODULES/graph/DirectedWeightedGraph.tsx）
+import * as d3 from 'd3';
+import React, { useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { selectGraph } from '@STORE/graphDataSlice';
+import { selectSpec } from '@STORE/graphSpecSlice';
+
+export default function DirectedWeightedGraph() {
+  const data = useSelector(selectGraph);
+  const spec = useSelector(selectSpec);
+  const ref = useRef<SVGSVGElement | null>(null);
+
+  useEffect(() => {
+    if (!data || !spec || !ref.current) return;
+
+    const svg = d3.select(ref.current);
+    svg.selectAll('*').remove(); // 清空
+
+    // --- 层 ---
+    const g = svg.append('g');
+    const gEdges = g.append('g').attr('id', 'edges');
+    const gNodes = g.append('g').attr('id', 'nodes');
+    const gLabels = g.append('g').attr('id', 'labels');
+    const gWeights = g.append('g').attr('id', 'weights');
+
+    // --- 缩放/居中 ---
+    svg.call(d3.zoom<SVGSVGElement, unknown>().on('zoom', (e) => g.attr('transform', e.transform)));
+
+    // --- 力导向 ---
+    const sim = d3.forceSimulation(data.nodes as any)
+      .force('link', d3.forceLink(data.edges as any).id((d: any) => d.id).distance(spec.layout?.force?.linkDistance ?? 120))
+      .force('charge', d3.forceManyBody().strength(spec.layout?.force?.charge ?? -300))
+      .force('collide', d3.forceCollide(spec.layout?.force?.collide ?? 36))
+      .on('tick', ticked);
+
+    // --- 双通道入/出（使用法线偏移） ---
+    const offset = spec.edge?.curveOffset ?? 14;
+    const edgesDual = [
+      ...data.edges.map(e => ({ ...e, _ch: 'out' })),
+      ...data.edges.map(e => ({ ...e, _ch: 'in' }))
+    ];
+
+    const edgeSel = gEdges.selectAll('path')
+      .data(edgesDual, (d: any) => d.id + ':' + d._ch)
+      .join('path')
+      .attr('fill', 'none')
+      .attr('stroke', (d: any) => d._ch === 'out' ? spec.palette.edgeOut : spec.palette.edgeIn)
+      .attr('stroke-width', (d: any) =>
+        d3.scaleLinear().domain([1, d3.max(data.edges, e => e.weight ?? 1) || 1])
+          .range([spec.edge.strokeWidth.min, spec.edge.strokeWidth.max])(d.weight ?? 1)
+      )
+      .attr('marker-end', (d: any) => d._ch === 'out' ? 'url(#arrowOut)' : 'url(#arrowIn)');
+
+    // 箭头
+    const defs = svg.append('defs');
+    defs.append('marker').attr('id', 'arrowOut').attr('markerWidth', 10).attr('markerHeight', 10)
+      .attr('refX', 10).attr('refY', 3).attr('orient', 'auto').append('path')
+      .attr('d', 'M0,0 L10,3 L0,6 Z').attr('fill', spec.palette.edgeOut);
+    defs.append('marker').attr('id', 'arrowIn').attr('markerWidth', 10).attr('markerHeight', 10)
+      .attr('refX', 10).attr('refY', 3).attr('orient', 'auto').append('path')
+      .attr('d', 'M0,0 L10,3 L0,6 Z').attr('fill', spec.palette.edgeIn);
+
+    const nodeSel = gNodes.selectAll('circle')
+      .data(data.nodes, (d: any) => d.id)
+      .join('circle')
+      .attr('r', spec.node?.radius?.min ?? 20)
+      .attr('fill', (d: any, i: number) => spec.palette.nodeFill[d.id] ?? spec.palette.default)
+      .attr('stroke', spec.palette.nodeStroke);
+
+    const labelSel = gLabels.selectAll('text')
+      .data(data.nodes, (d: any) => 'label:' + d.id)
+      .join('text')
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '12px')
+      .text((d: any) => `${d.label}\nPR: ${d.rank.toFixed(3)}`);
+
+    const weightSel = gWeights.selectAll('text')
+      .data(edgesDual, (d: any) => 'w:' + d.id + ':' + d._ch)
+      .join('text')
+      .attr('font-size', '13px')
+      .attr('fill', spec.palette.weightText)
+      .text((d: any) => (d.weight ?? 1).toString());
+
+    function ticked() {
+      edgeSel.attr('d', (e: any) => {
+        const s = [e.source.x, e.source.y], t = [e.target.x, e.target.y];
+        const vx = t[0] - s[0], vy = t[1] - s[1];
+        const len = Math.hypot(vx, vy) || 1;
+        const n = [-vy / len, vx / len]; // 法线
+        const dir = e._ch === 'out' ? 1 : -1;
+        const p1 = [s[0] + n[0] * offset * dir, s[1] + n[1] * offset * dir];
+        const p2 = [t[0] + n[0] * offset * dir, t[1] + n[1] * offset * dir];
+        return `M${p1[0]},${p1[1]} L${p2[0]},${p2[1]}`;
+      });
+
+      nodeSel.attr('cx', (d: any) => d.x).attr('cy', (d: any) => d.y);
+      labelSel.attr('x', (d: any) => d.x).attr('y', (d: any) => d.y + (spec.node?.radius?.min ?? 20) + 16);
+      weightSel.attr('x', (e: any) => (e.source.x + e.target.x) / 2 + (e._ch === 'out' ? offset : -offset))
+               .attr('y', (e: any) => (e.source.y + e.target.y) / 2);
+    }
+
+    return () => sim.stop();
+  }, [data, spec]);
+
+  return <svg ref={ref} width="100%" height="100%" />;
+}
+
+5) 页面入口（路径：@PAGES/PageRankCourse.tsx）
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import DirectedWeightedGraph from '@MODULES/graph/DirectedWeightedGraph';
+import { loadGraphSpec } from '@MODULES/graph/spec/SpecLoader';
+import { loadGraphData } from '@MODULES/graph/data/GraphDataLoader';
+
+export default function PageRankCourse() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // 如有代理/部署前缀，请把 URL 换成你的真实路径
+    loadGraphSpec(dispatch as any, '/specs/directed-weighted-graph.spec.json');
+    loadGraphData(dispatch as any, '/data/pagerank-graph-data.json');
+  }, [dispatch]);
+
+  return (
+    <div className="graph-stage">
+      <DirectedWeightedGraph />
+    </div>
+  );
+}

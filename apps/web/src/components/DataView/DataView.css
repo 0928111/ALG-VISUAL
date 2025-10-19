@@ -1,0 +1,250 @@
+.data-view {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 12px;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden; /* 防止内容溢出 */
+}
+
+.data-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.data-header h3 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.step-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-label {
+  font-size: 14px;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.step-value {
+  background: #3b82f6;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #7f8c8d;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.pagerank-section {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow-y: auto; /* 添加滚动条 */
+  max-height: calc(100vh - 400px); /* 限制最大高度，避免溢出 */
+  min-height: 200px; /* 设置最小高度 */
+}
+
+.pagerank-section h4 {
+  margin: 0 0 20px 0;
+  color: #1e293b;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pagerank-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: calc(100vh - 500px); /* 进一步限制列表高度 */
+  overflow-y: auto; /* 列表内部滚动 */
+  padding-right: 8px; /* 为滚动条预留空间 */
+}
+
+.pagerank-item {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+  transition: all 0.3s ease;
+}
+
+.pagerank-item.animating {
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.node-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.node-name {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 14px;
+}
+
+.node-value {
+  font-weight: 700;
+  color: #e74c3c;
+  font-size: 16px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: rgba(236, 240, 241, 0.8);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #3b82f6;
+  border-radius: 4px;
+  transition: width 0.3s ease-in-out;
+}
+
+.value-change {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.change-up {
+  color: #27ae60;
+}
+
+.change-down {
+  color: #e74c3c;
+}
+
+.change-same {
+  color: #95a5a6;
+}
+
+.step-details {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 10px; /* 添加底部安全间距 */
+}
+
+.step-details h4 {
+  margin: 0 0 15px 0;
+  color: #1e293b;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.step-description {
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  border-left: 3px solid #3b82f6;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .data-view {
+    padding: 15px;
+    overflow-y: auto; /* 移动端允许整体滚动 */
+  }
+  
+  .stats-section {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .data-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .pagerank-section {
+    padding: 15px;
+    max-height: calc(100vh - 350px); /* 移动端调整高度 */
+    min-height: 150px;
+    margin-bottom: 15px; /* 增加底部间距 */
+  }
+  
+  .pagerank-list {
+    max-height: calc(100vh - 450px); /* 移动端列表高度 */
+    padding-right: 5px; /* 减小滚动条空间 */
+  }
+  
+  .step-details {
+    padding: 15px;
+    margin-bottom: 15px; /* 增加底部安全间距 */
+  }
+}
+
+@media (max-width: 480px) {
+  .pagerank-section {
+    max-height: calc(100vh - 320px); /* 小屏幕进一步调整 */
+    min-height: 120px;
+    margin-bottom: 10px; /* 调整底部间距 */
+  }
+  
+  .pagerank-list {
+    max-height: calc(100vh - 400px); /* 小屏幕列表高度 */
+    gap: 10px; /* 减小间距 */
+  }
+  
+  .step-details {
+    margin-bottom: 10px; /* 调整底部间距 */
+  }
+}

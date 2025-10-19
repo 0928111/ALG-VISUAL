@@ -1,0 +1,208 @@
+/* 动画优化系统样式 */
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1rem;
+}
+
+.navigation {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.navigation button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.navigation button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.navigation button.active {
+  background: rgba(255, 255, 255, 0.9);
+  color: #667eea;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-page {
+  text-align: center;
+  color: white;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.logo-text {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.card {
+  padding: 2em;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  margin: 2rem 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.feature-list {
+  text-align: left;
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.feature-list li {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.demo-button, .test-button {
+  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0.5rem;
+  border-radius: 25px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.demo-button:hover, .test-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.test-button {
+  background: linear-gradient(45deg, #4ecdc4, #44a08d);
+}
+
+.read-the-docs {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+.animation-page, .test-page {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.pagerank-page {
+  min-height: calc(100vh - 80px);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 0.5rem;
+  }
+  
+  .navigation {
+    gap: 0.5rem;
+  }
+  
+  .navigation button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .logo-text {
+    font-size: 2rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .animation-page, .test-page {
+    padding: 1rem;
+    margin: 0.5rem 0;
+  }
+}
+
+/* 暗色主题支持 */
+@media (prefers-color-scheme: dark) {
+  .app-container {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  }
+  
+  .navigation button.active {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1a1a2e;
+  }
+  
+  .animation-page, .test-page {
+    background: #2d3748;
+    color: white;
+  }
+}
+
+/* 高对比度模式 */
+@media (prefers-contrast: high) {
+  .navigation button {
+    border: 2px solid white;
+  }
+  
+  .navigation button.active {
+    border: 2px solid #667eea;
+  }
+}
+
+/* 减少动画模式 */
+@media (prefers-reduced-motion: reduce) {
+  .logo-text {
+    animation: none;
+  }
+  
+  .navigation button,
+  .demo-button,
+  .test-button {
+    transition: none;
+  }
+  
+  .navigation button:hover,
+  .demo-button:hover,
+  .test-button:hover {
+    transform: none;
+  }
+}

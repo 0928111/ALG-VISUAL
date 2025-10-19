@@ -1,0 +1,39 @@
+{
+  "name": "@alg-visualization/flowchart-renderer",
+  "version": "1.0.0",
+  "description": "Flowchart and graph visualization renderer for algorithm visualization",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "three": "^0.180.0",
+    "three-stdlib": "^2.36.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.180.0",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "keywords": [
+    "algorithm",
+    "visualization",
+    "graph",
+    "flowchart",
+    "threejs",
+    "webgl"
+  ],
+  "author": "Algorithm Visualization Team",
+  "license": "MIT"
+}
