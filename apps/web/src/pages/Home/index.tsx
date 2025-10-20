@@ -17,14 +17,6 @@ function Home() {
     navigate('/demo')
   }
 
-  const handleLabelCollisionTestClick = () => {
-    navigate('/test-label-collision')
-  }
-
-  const handleLabelCollisionDemoClick = () => {
-    navigate('/label-collision-demo')
-  }
-
   return (
     <div className="home">
       <Navigation />
@@ -34,20 +26,6 @@ function Home() {
           <p className="home-subtitle">通过交互式可视化学习经典算法</p>
           <button className="demo-button" onClick={handleDemoClick}>
             🎯 查看可视化演示
-          </button>
-          <button 
-            className="demo-button" 
-            onClick={handleLabelCollisionTestClick}
-            style={{ marginLeft: '10px', backgroundColor: '#e53e3e' }}
-          >
-            🏷️ 标签碰撞优化测试
-          </button>
-          <button 
-            className="demo-button" 
-            onClick={handleLabelCollisionDemoClick}
-            style={{ marginLeft: '10px', backgroundColor: '#9b59b6' }}
-          >
-            🎯 标签碰撞演示
           </button>
         </header>
 

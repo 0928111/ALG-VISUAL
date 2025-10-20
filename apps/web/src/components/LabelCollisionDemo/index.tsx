@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { GraphRenderer } from '@alg-visual/flowchart-renderer';
+import * as d3 from 'd3';
 import './LabelCollisionDemo.css';
 
 interface GraphNode {
@@ -26,7 +26,7 @@ interface GraphData {
 
 const LabelCollisionDemo: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const rendererRef = useRef<GraphRenderer | null>(null);
+  const svgRef = useRef<SVGSVGElement | null>(null);
   const [collisionInfo, setCollisionInfo] = useState<string>('');
   const [isOptimized, setIsOptimized] = useState(false);
 
@@ -97,17 +97,18 @@ const LabelCollisionDemo: React.FC = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // 初始化渲染器
-    rendererRef.current = new GraphRenderer('label-collision-graph-container', {
-      width: 600,
-      height: 400,
-      isCollapsible: false,
-      isDraggable: true
-    });
+    // 创建SVG容器
+    const svg = d3.select(containerRef.current)
+      .append('svg')
+      .attr('width', 600)
+      .attr('height', 400)
+      .style('border', '1px solid #ccc');
+
+    svgRef.current = svg.node();
 
     return () => {
-      if (rendererRef.current) {
-        rendererRef.current.destroy();
+      if (containerRef.current && svgRef.current) {
+        containerRef.current.removeChild(svgRef.current);
       }
     };
   }, []);
@@ -118,9 +119,43 @@ const LabelCollisionDemo: React.FC = () => {
     
     const testData = createCollisionTestData();
     
-    if (rendererRef.current) {
+    if (svgRef.current) {
+      const svg = d3.select(svgRef.current);
+      svg.selectAll('*').remove(); // 清空SVG
+      
       console.log('📊 渲染碰撞测试数据:', testData);
-      rendererRef.current.render(testData);
+      
+      // 绘制边
+      svg.selectAll('line')
+        .data(testData.links)
+        .enter()
+        .append('line')
+        .attr('x1', d => testData.nodes.find(n => n.id === d.source)?.x || 0)
+        .attr('y1', d => testData.nodes.find(n => n.id === d.source)?.y || 0)
+        .attr('x2', d => testData.nodes.find(n => n.id === d.target)?.x || 0)
+        .attr('y2', d => testData.nodes.find(n => n.id === d.target)?.y || 0)
+        .attr('stroke', '#999')
+        .attr('stroke-width', 2);
+      
+      // 绘制节点
+      const nodeGroups = svg.selectAll('g')
+        .data(testData.nodes)
+        .enter()
+        .append('g')
+        .attr('transform', d => `translate(${d.x},${d.y})`);
+      
+      nodeGroups.append('circle')
+        .attr('r', 20)
+        .attr('fill', '#69b3a2')
+        .attr('stroke', '#333')
+        .attr('stroke-width', 2);
+      
+      nodeGroups.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('dy', 5)
+        .text(d => d.label)
+        .attr('font-size', '12px')
+        .attr('fill', '#333');
       
       // 检测碰撞
       setTimeout(() => {
@@ -134,8 +169,10 @@ const LabelCollisionDemo: React.FC = () => {
           
           // 高亮碰撞节点
           collisions.forEach(collision => {
-            rendererRef.current?.highlightNode(collision.node1);
-            rendererRef.current?.highlightNode(collision.node2);
+            svg.select(`g:nth-child(${testData.nodes.findIndex(n => n.id === collision.node1) + 2}) circle`)
+              .attr('fill', 'red');
+            svg.select(`g:nth-child(${testData.nodes.findIndex(n => n.id === collision.node2) + 2}) circle`)
+              .attr('fill', 'red');
           });
         } else {
           setCollisionInfo('未检测到标签碰撞');
@@ -149,9 +186,43 @@ const LabelCollisionDemo: React.FC = () => {
     
     const optimizedData = createOptimizedData();
     
-    if (rendererRef.current) {
+    if (svgRef.current) {
+      const svg = d3.select(svgRef.current);
+      svg.selectAll('*').remove(); // 清空SVG
+      
       console.log('📊 渲染优化后的数据:', optimizedData);
-      rendererRef.current.render(optimizedData);
+      
+      // 绘制边
+      svg.selectAll('line')
+        .data(optimizedData.links)
+        .enter()
+        .append('line')
+        .attr('x1', d => optimizedData.nodes.find(n => n.id === d.source)?.x || 0)
+        .attr('y1', d => optimizedData.nodes.find(n => n.id === d.source)?.y || 0)
+        .attr('x2', d => optimizedData.nodes.find(n => n.id === d.target)?.x || 0)
+        .attr('y2', d => optimizedData.nodes.find(n => n.id === d.target)?.y || 0)
+        .attr('stroke', '#999')
+        .attr('stroke-width', 2);
+      
+      // 绘制节点
+      const nodeGroups = svg.selectAll('g')
+        .data(optimizedData.nodes)
+        .enter()
+        .append('g')
+        .attr('transform', d => `translate(${d.x},${d.y})`);
+      
+      nodeGroups.append('circle')
+        .attr('r', 20)
+        .attr('fill', '#69b3a2')
+        .attr('stroke', '#333')
+        .attr('stroke-width', 2);
+      
+      nodeGroups.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('dy', 5)
+        .text(d => d.label)
+        .attr('font-size', '12px')
+        .attr('fill', '#333');
       
       // 检测优化后的碰撞
       setTimeout(() => {

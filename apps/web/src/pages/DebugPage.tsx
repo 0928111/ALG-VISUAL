@@ -118,7 +118,7 @@ function DebugPage() {
       <div style={{ marginTop: '20px' }}>
         <a href="/" style={{ marginRight: '10px' }}>🏠 返回主页</a>
         <a href="/course/pagerank" style={{ marginRight: '10px' }}>📊 PageRank</a>
-        <a href="/test-threejs">🎯 Three.js测试</a>
+
       </div>
     </div>
   );
